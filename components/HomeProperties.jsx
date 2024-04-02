@@ -1,14 +1,23 @@
 import React from 'react';
-import properties from '@/properties.json';
+
 import PropertyCard from './PropertyCard';
 import Link from 'next/link';
+import Hero from './Hero';
+import InfoBoxes from './InfoBoxes';
+import Footer from './Footer';
+import { fetchProperties } from '@/utils/requests';
 
-const HomeProperties = () => {
+const HomeProperties = async () => {
+  const properties = await fetchProperties();
+
   const recentProperties = properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
+
   return (
     <>
+      <Hero />
+      <InfoBoxes />
       <section className='px-4 py-6'>
         <div className='container-xl lg:container m-auto'>
           <h2 className='text-3xl font-bold text-blue-500 mb-6 text-center'>
@@ -34,6 +43,7 @@ const HomeProperties = () => {
           View All Properties
         </Link>
       </section>
+      <Footer />
     </>
   );
 };
