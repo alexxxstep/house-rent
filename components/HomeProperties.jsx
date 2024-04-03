@@ -43,7 +43,6 @@ const HomeProperties = async () => {
           View All Properties
         </Link>
       </section>
-      <Footer />
     </>
   );
 };
